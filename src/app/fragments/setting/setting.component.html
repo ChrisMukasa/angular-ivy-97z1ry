@@ -1,0 +1,47 @@
+<section class="schooling">
+  <div class="container pt-3" id="main-container">
+    <div class="row" style="display:flex; justify-content: space-between; align-items: center;">
+      <h2 class="col-md-10">Paremetres</h2>
+      <button mat-raised-button color="accent" (click)="createBackup()">BACKUP GLOBAL</button>
+    </div>
+    <hr class="dropdown-divider" />
+
+    <h4 class="title mt-4 mb-3">Liste des actions sur la base de données</h4>
+
+      <div [formGroup]="form" class="row" style="display:flex; justify-content: space-between;">
+        <mat-card style="width: 50%; margin-right: 16px">
+          <mat-card-title>Exportation</mat-card-title>
+          <mat-card-subtitle>Exportation sous fichier EXCEL, JSON, CSV</mat-card-subtitle>
+          <div class="col-md-4 mt-3">
+            <mat-label style="margin-right: 16px">Selectionner le format</mat-label><br><br>
+            <mat-radio-group class="tp-radio-group" formControlName="format">
+              <mat-radio-button class="tp-radio-button" *ngFor="let format of formats" [value]="format.id">
+                 {{format.designation}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <br>
+          <mat-card-content>Selectionner la table</mat-card-content>
+          <mat-form-field class="input_text_form" appearance="fill">
+            <mat-label>TABLE A EXPORTER</mat-label>
+            <mat-select formControlName="table" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let table of tables" [value]="table.id">
+                {{table.designation}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['table'].hasError('required')">Veuillez choisir une table</mat-error>
+          </mat-form-field>
+          <mat-card-actions align="end">
+            <button mat-button color="primary" (click)="createExportExcel()">Exporter</button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card style="width: 50%;">
+          <mat-card-title>Exportation PDF</mat-card-title>
+          <mat-card-subtitle>Exportation sous fichier PDF</mat-card-subtitle>
+          <mat-card-content>Selectionner la table</mat-card-content>
+        </mat-card>
+      </div>
+  </div>
+</section>
