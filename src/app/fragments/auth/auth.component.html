@@ -1,0 +1,35 @@
+<mat-card class="login">
+  <div class="container_login">
+    <div class="sign_in_form">
+      <mat-content [formGroup]="form">
+
+        <h1>Connexion</h1>
+        <p>S'il vous plaît connectez-vous pour continuer</p>
+        <br>
+
+        <mat-form-field class="input_text_form" appearance="fill">
+          <mat-label>NUMERO DE TELEPHONE</mat-label>
+          <input matInput placeholder="ex: +243 999 999 999" formControlName="phone" autocomplete="false">
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-error *ngIf="form.controls['phone'].hasError('required')">
+            Numero de telephone <strong>est requis</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input_text_form" appearance="fill">
+          <mat-label>MOT DE PASSE</mat-label>
+          <input matInput placeholder="Au moins 6 caractères" formControlName="password" autocomplete="false">
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error *ngIf="form.controls['password'].hasError('length')"> Entrez un mot de passe valide s'il vous plait
+          </mat-error>
+          <mat-error *ngIf="form.controls['password'].hasError('required')"> mot de passe <strong>est requis</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="signIn()">Connexion</button>
+        <br>
+        <button mat-raised-button color="accent" routerLink="/sign_up">Enregistrement</button>
+      </mat-content>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,156 @@
+<mat-card-title>Nouveaux facteurs sociaux economique</mat-card-title>
+<br><br>
+<mat-dialog-content [formGroup]="form">
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>MENAGE</mat-label>
+        <mat-select formControlName="id_household" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let household of households" [value]="household.id">
+            {{household.id}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_household'].hasError('required')">Veuillez choisir un menage</mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>APPARTENANCE DU MENAGE</mat-label>
+        <mat-select formControlName="proprio_location" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let proprio_location of proprio_locations" [value]="proprio_location.designation">
+            {{proprio_location.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['proprio_location'].hasError('required')">Selectionner l'appartenance du menage</mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Profession du chef de menage</mat-label>
+        <input matInput placeholder="Entrez Profession du chef de menage ici" formControlName="profession_head_of_household">
+        <mat-error *ngIf="form.controls['profession_head_of_household'].hasError('required')">
+          La profession du chef de menage <strong>est requise</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Source de revenue habituelle</mat-label>
+        <input matInput placeholder="Entrez la source de revenue habituelle ici" formControlName="usual_source_of_income">
+        <mat-error *ngIf="form.controls['usual_source_of_income'].hasError('required')">
+          La source de revenue habituelle <strong>est requise</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Autre profession du chef de menage</mat-label>
+        <input matInput placeholder="Entrez d'autres sources de revenue ici" formControlName="other_profession">
+        <mat-error *ngIf="form.controls['other_profession'].hasError('required')">
+          Les autres professions du chef de menage <strong>sont requises</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Montant du loyer</mat-label>
+        <input matInput placeholder="Entrez le montant du loyer ici" formControlName="rent_amount">
+        <mat-error *ngIf="form.controls['rent_amount'].hasError('required')">
+          Le montant du loyer est requis <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Nombre de chambre a coucher</mat-label>
+        <input matInput placeholder="Entrez nombre de chambre a coucher ici" formControlName="bedroom">
+        <mat-error *ngIf="form.controls['bedroom'].hasError('required')">
+          Le nombre de chambre a coucher <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Nombre des personnes vivant dans l'habitation</mat-label>
+        <input matInput placeholder="Entrez le nombre des personnes vivant dans l'habitation ici" formControlName="number_of_member">
+        <mat-error *ngIf="form.controls['number_of_member'].hasError('required')">
+          Le nombre des personnes vivant dans l'habitation<strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Nombre des maison dans la parcelle</mat-label>
+        <input matInput placeholder="Entrez nombre des maison dans la parcelle ici" formControlName="number_habitation">
+        <mat-error *ngIf="form.controls['number_habitation'].hasError('required')">
+          Le nombre des maison dans la parcelle <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Autre facteur</mat-label>
+        <input matInput placeholder="Si autre, precisez ici" formControlName="other_factor">
+        <mat-error *ngIf="form.controls['other_factor'].hasError('required')">
+          Autre facteur <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Capacite a payer des soins de sante</mat-label>
+        <mat-select formControlName="capacity_cost" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let capacity_cost of capacity_costs" [value]="capacity_cost.designation">
+            {{capacity_cost.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['capacity_cost'].hasError('required')">Selectionner la capacite a payer les soins de sante</mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Qui paye les soins medicaux</mat-label>
+        <mat-select formControlName="payment_type" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let capacity_payment_type of capacity_payment_types" [value]="capacity_payment_type.designation">
+            {{capacity_payment_type.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['payment_type'].hasError('required')">Selectionner qui paye les soins medicaux</mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <p class="second" style="width: 100%;">
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>AUTRE</mat-label>
+      <input matInput placeholder="Entrez autre detail ici" formControlName="other_info">
+      <mat-error *ngIf="form.controls['other_info'].hasError('required')">
+        Autre details <strong>est requis</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">Fermer</button>
+  <button mat-raised-button color="primary" (click)="create()">Enregistrer</button>
+</mat-dialog-actions>

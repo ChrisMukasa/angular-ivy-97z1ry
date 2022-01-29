@@ -1,0 +1,190 @@
+<mat-card-title>Create new member</mat-card-title>
+<br><br>
+<mat-dialog-content [formGroup]="form">
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Household</mat-label>
+        <mat-select formControlName="id_household" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let household of households" [value]="household.id">
+            {{household.id}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_household'].hasError('required')">Please choose a household</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>John Doe Example</mat-label>
+        <input matInput placeholder="Your fullname here" formControlName="fullname">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="form.controls['fullname'].hasError('required')">
+          Full name <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let gender of genders" [value]="gender.designation">
+            {{gender.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['gender'].hasError('required')">Please choose your gender</mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Place of birth</mat-label>
+        <input matInput placeholder="Your place of birth" formControlName="pob">
+        <mat-icon matSuffix>fmd_good</mat-icon>
+        <mat-error *ngIf="form.controls['pob'].hasError('required')">
+          Your place of birth <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Marital status</mat-label>
+        <mat-select formControlName="id_marital_status" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let marital_status of marital_status" [value]="marital_status.id">
+            {{marital_status.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_marital_status'].hasError('required')">Please choose a marital status
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Relationship</mat-label>
+        <mat-select formControlName="id_relationship" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let relationship of relationships" [value]="relationship.id">
+            {{relationship.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_relationship'].hasError('required')">Please choose a relationship
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Schooling</mat-label>
+        <mat-select formControlName="id_schooling" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let schooling of schoolings" [value]="schooling.id">
+            {{schooling.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_schooling'].hasError('required')">Please choose a schooling</mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>+243 999 999 999</mat-label>
+        <input matInput placeholder="Your phone number" formControlName="phone">
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="form.controls['phone'].hasError('length')">
+          Please enter a valid Phone number
+        </mat-error>
+        <mat-error *ngIf="form.controls['phone'].hasError('required')">
+          Phone number <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Religion</mat-label>
+        <mat-select formControlName="id_religion" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let religion of religions" [value]="religion.id">
+            {{religion.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_religion'].hasError('required')">Please choose a religion</mat-error>
+      </mat-form-field>
+    </p>
+    <!-- <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Nationality</mat-label>
+        <mat-select formControlName="id_nationality" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let nationality of nationalities" [value]="nationality.id">
+            {{nationality.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_nationality'].hasError('required')">Please choose a nationality</mat-error>
+      </mat-form-field>
+    </p> -->
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Ex: profession</mat-label>
+        <input matInput placeholder="Your profession here" formControlName="profession">
+        <mat-icon matSuffix>job</mat-icon>
+        <mat-error *ngIf="form.controls['profession'].hasError('required')">
+          Profession <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Mutual</mat-label>
+        <mat-select formControlName="mutual" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let mutual of mutuals" [value]="mutual.id">
+            {{mutual.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['mutual'].hasError('required')">Please choose the mutual</mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Observation</mat-label>
+        <input matInput placeholder="Your observation number" formControlName="observation">
+        <mat-icon matSuffix>observation</mat-icon>
+        <mat-error *ngIf="form.controls['observation'].hasError('length')">
+          Please enter a valid observation
+        </mat-error>
+        <mat-error *ngIf="form.controls['observation'].hasError('required')">
+          The observation <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">Fermer</button>
+  <button mat-raised-button color="primary" (click)="create()">Enregistrer</button>
+</mat-dialog-actions>

@@ -1,0 +1,150 @@
+<mat-card-title>Modification du Menage</mat-card-title>
+<br><br>
+<mat-dialog-content [formGroup]="form">
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Zone de santé</mat-label>
+        <mat-select formControlName="id_health_zone" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let health_zone of health_zones" [value]="health_zone.id">
+            {{health_zone.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_health_zone'].hasError('required')">Veuillez choisir une zone de santé
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Centre de santé</mat-label>
+        <mat-select formControlName="id_health_center" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let health_center of health_centers" [value]="health_center.id">
+            {{health_center.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_health_center'].hasError('required')">Veuillez choisir un centre de santé
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Ville</mat-label>
+        <mat-select formControlName="id_city" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let city of cities" [value]="city.id">
+            {{city.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_city'].hasError('required')">Veuillez choisir une ville</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Commune</mat-label>
+        <mat-select formControlName="id_commune" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let commune of communes" [value]="commune.id">
+            {{commune.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_commune'].hasError('required')">Veuillez choisir une commune</mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Quartier</mat-label>
+        <mat-select formControlName="id_district" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let district of districts" [value]="district.id">
+            {{district.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_district'].hasError('required')">Veuillez choisir un quartier</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Avenue</mat-label>
+        <mat-select formControlName="id_avenue" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let avenue of avenues" [value]="avenue.id">
+            {{avenue.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_avenue'].hasError('required')">Veuillez choisir une avenue</mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>longitude</mat-label>
+        <input matInput placeholder="Your longitude number" formControlName="longitude">
+        <mat-icon matSuffix>longitude</mat-icon>
+        <mat-error *ngIf="form.controls['longitude'].hasError('length')">
+          Veuillez saisir la longitude
+        </mat-error>
+        <mat-error *ngIf="form.controls['longitude'].hasError('required')">
+          La longitude <strong>est requise</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>latitude</mat-label>
+        <input matInput placeholder="Your latitude number" formControlName="latitude">
+        <mat-icon matSuffix>latitude</mat-icon>
+        <mat-error *ngIf="form.controls['latitude'].hasError('length')">
+          Veuillez saisir une latitude
+        </mat-error>
+        <mat-error *ngIf="form.controls['latitude'].hasError('required')">
+          La latitude <strong>est requise</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Visibilié</mat-label>
+        <mat-select formControlName="state" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let state of states" [value]="state.designation">
+            {{state.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['state'].hasError('required')">Veuillez choisir la visibilié</mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>number</mat-label>
+        <input matInput placeholder="Numero de la parcelle" formControlName="number">
+        <mat-icon matSuffix>number</mat-icon>
+        <mat-error *ngIf="form.controls['number'].hasError('length')">
+          Veuillez saisir le numero de la parcelle
+        </mat-error>
+        <mat-error *ngIf="form.controls['number'].hasError('required')">
+          Le numero de la parcelle <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">Fermer</button>
+  <button mat-raised-button color="primary" (click)="update()">Modifier</button>
+</mat-dialog-actions>

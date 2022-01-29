@@ -1,0 +1,38 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<mat-sidenav-container class="sidenav-container row">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+
+    <h2>CSMU ADMIN</h2>
+      <ul class="navbar-nav">
+        <a mat-button routerLink="dashboard" class="nav-link active"><span><i class="uil uil-dashboard"></i></span>Acceuil </a>
+        <a mat-button routerLink="household"> <span><i class="uil uil-estate"></i></span>Menage </a>
+        <a mat-button routerLink="member"> <span><i class="uil uil-users-alt"></i></span>Membre </a>
+        <a mat-button routerLink="health_zone"> <span><i class="uil uil-hospital-square-sign"></i></span>Zone de sante</a>
+        <a mat-button routerLink="health_center"> <span><i class="uil uil-clinic-medical"></i></span>Centre de sante</a>
+        <a mat-button routerLink="localisation"> <span><i class="uil uil-map-marker-alt"></i></span>Localisation </a>
+        <a mat-button routerLink="nationality"> <span><i class="uil uil-club"></i></span>Nationalite </a>
+        <a mat-button routerLink="religion"> <span><i class="uil uil-dashboard"></i></span>Religion </a>
+        <a mat-button routerLink="schooling"> <span><i class="uil uil-graduation-cap"></i></span>Scolarite </a>
+        <a mat-button routerLink="relationship"> <span><i class="uil uil-link-alt"></i></span>Lien parental </a>
+        <a mat-button routerLink="marital_status"> <span><i class="uil uil-capsule"></i></span>Etat civil </a>
+        <a mat-button routerLink="water"> <span><i class="uil uil-tear"></i></span>Source d'eau </a>
+        <a mat-button routerLink="health_factor"> <span><i class="uil uil-sanitizer-alt"></i></span>Facteur sanitaire</a>
+        <a mat-button routerLink="primary_prediction"> <span><i class="uil uil-shield-plus"></i></span>Prevention primaire </a>
+        <a mat-button routerLink="social_economic_level"><span><i class="uil uil-user-arrows"></i></span>Niveau socio-eco. </a>
+        <a mat-button routerLink="setting"> <span><i class="uil uil-setting"></i></span>Parametres </a>
+      </ul>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidecontent">
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <ng-component></ng-component>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- mat-button  -->
+<script>
+</script>

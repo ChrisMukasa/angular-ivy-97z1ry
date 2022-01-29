@@ -1,0 +1,154 @@
+<section class="dashboard">
+  <div class="container" id="main-container">
+    <p>OVERVIEW</p>
+    <h3>Dashboard</h3>
+    <hr class="dropdown-divider">
+
+    <div class="row" style="display: flex; justify-content: space-between;">
+      <mat-card style="border-left: 6px solid #0779e4; border-radius: 6px;">
+        <div class="card-body">
+          <div class="row" style="display: flex; justify-content: space-between;">
+            <div class="content col-9">
+              <p class="card-title">Menages</p>
+              <h2 class="card-text">{{household_length}}</h2>
+            </div>
+            <i class="uil uil-estate col-3" style="font-size: 3.5rem; color: #0779e4;"></i>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card style="border-left: 6px solid orange; border-radius: 6px;">
+        <div class="card-body">
+          <div class="row" style="display: flex; justify-content: space-between;">
+            <div class="content col-9">
+              <p class="card-title">Membres</p>
+              <h2 class="card-text">{{member_length}}</h2>
+            </div>
+            <i class="uil uil-users-alt col-3" style="font-size: 3.5rem; color: orange;"></i>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card style="border-left: 6px solid green; border-radius: 6px;">
+        <div class="card-body">
+          <div class="row" style="display: flex; justify-content: space-between;">
+            <div class="content col-9">
+              <p class="card-title">Facteur sanitaire</p>
+              <h2 class="card-text">{{health_factor_length}}</h2>
+            </div>
+            <i class="uil uil-sanitizer-alt col-3" style="font-size: 3.5rem; color: green; border-radius: 6px;"></i>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card style="border-left: 6px solid peru; border-radius: 6px;">
+        <div class="card-body">
+          <div class="row" style="display: flex; justify-content: space-between;">
+            <div class="content col-9">
+              <p class="card-title">Fac. de prev. primaire</p>
+              <h2 class="card-text">{{service_primary_prediction_length}}</h2>
+            </div>
+            <i class="uil uil-shield-plus col-3" style="font-size: 3.5rem; color: peru; border-radius: 6px;"></i>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="row" style="display: flex; justify-content: space-between;">
+      <mat-card style="border-left: 6px solid rgb(194, 194, 10); border-radius: 6px;">
+        <div class="card-body">
+          <div class="row" style="display: flex; justify-content: space-between;">
+            <div class="content col-9">
+              <p class="card-title">Cities</p>
+              <h2 class="card-text">{{city_length}}</h2>
+            </div>
+            <i class="uil uil-map-marker-shield col-3" style="font-size: 3.5rem; color: rgb(194, 194, 10);;"></i>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card style="border-left: 6px solid red; border-radius: 6px;">
+        <div class="card-body">
+          <div class="row" style="display: flex; justify-content: space-between;">
+            <div class="content col-9">
+              <p class="card-title">Communes</p>
+              <h2 class="card-text">{{commune_length}}</h2>
+            </div>
+            <i class="uil uil-map-marker-alt col-3" style="font-size: 3.5rem; color: red;"></i>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card style="border-left: 6px solid rgb(194, 39, 194);; border-radius: 6px;">
+        <div class="card-body">
+          <div class="row" style="display: flex; justify-content: space-between;">
+            <div class="content col-9">
+              <p class="card-title">Districts</p>
+              <h2 class="card-text">{{district_length}}</h2>
+            </div>
+            <i class="uil uil-map-marker-alt col-3" style="font-size: 3.5rem; color: rgb(194, 39, 194);"></i>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card style="border-left: 6px solid brown; border-radius: 6px;">
+        <div class="card-body">
+          <div class="row" style="display: flex; justify-content: space-between;">
+            <div class="content col-9">
+              <p class="card-title">Avenues</p>
+              <h2 class="card-text">{{avenue_length}}</h2>
+            </div>
+            <i class="uil uil-map-marker-alt col-3" style="font-size: 3.5rem; color: brown;"></i>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <h5 class="title mt-4 mb-3">Recent members</h5>
+    <!-- Datagrid view -->
+    <div class="mat-elevation-z2">
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> Id. </th>
+          <td mat-cell *matCellDef="let member"> {{member.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fullname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fullname"> Fullname </th>
+          <td mat-cell *matCellDef="let member"> {{member.fullname}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by gender"> Gender </th>
+          <td mat-cell *matCellDef="let member"> {{member.gender}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by phone"> Phone </th>
+          <td mat-cell *matCellDef="let member"> {{member.phone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by created_at"> Date </th>
+          <td mat-cell *matCellDef="let member"> {{member.created_at.toString().substring(0, 10)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let member">
+            <div class="btn-group">
+              <a (click)="viewDialog(member)" class="btn btn-light btn-xs" title="View"
+                style="background-color: rgba(0, 0, 128, 0.1)"> <i class="uil uil-eye" style="color: #000080"></i></a>
+              <a (click)="updateDialog(member)" class="btn btn-light btn-xs" title="Edit"
+                style="background-color: rgba(0, 128, 0, 0.1)"> <i class="uil uil-pen" style="color: #008000"></i></a>
+              <a (click)="deleteDialog(member.id)" class="btn btn-light btn-xs" title="Delete"
+                style="background-color: rgba(221, 19, 19, 0.1)"> <i class="uil uil-trash"
+                  style="color: #dd1313"></i></a>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[4]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+</section>

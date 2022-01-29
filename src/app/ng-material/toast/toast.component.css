@@ -1,0 +1,34 @@
+::ng-deep .snack-success {
+  background-color: green;
+  color: #fff;
+}
+
+::ng-deep .snack-error {
+  background-color: #dd1313;
+  color: #fff;
+}
+
+::ng-deep .snack-custom-error {
+  background-color: #dd1313;
+  color: #fff;
+}
+
+::ng-deep .snack-custom-success {
+  background-color: green;
+  color: #fff;
+}
+
+::ng-deep .snack-custom-message {
+  background-color: purple;
+  color: #fff;
+}
+
+::ng-deep .snack-custom-warning {
+  background-color: orange;
+  color: #000;
+}
+
+i {
+  font-size: 24px;
+  margin-right: 16px;
+}

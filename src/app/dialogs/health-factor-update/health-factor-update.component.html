@@ -1,0 +1,52 @@
+<mat-card-title>Modifier le facteur sanitaire</mat-card-title>
+<br><br>
+<mat-dialog-content [formGroup]="form">
+  <p>
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>MENAGE</mat-label>
+      <mat-select formControlName="id_household" required>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let household of households" [value]="household.id">
+          {{household.id}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['id_household'].hasError('required')">Veuillez choisir un menage</mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>MALADIES FAMILIALES</mat-label>
+      <input matInput placeholder="Entrez les maladies familiales ici" formControlName="family_diseases">
+      <mat-icon matSuffix>article</mat-icon>
+      <mat-error *ngIf="form.controls['family_diseases'].hasError('required')">
+        Les maladies familiales <strong>sont requises</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>MALADES CHRONIQUE DANS LA FAMILLE</mat-label>
+      <input matInput placeholder="Entrez les malades chronique ici" formControlName="other_family_diseases">
+      <mat-icon matSuffix>article</mat-icon>
+      <mat-error *ngIf="form.controls['other_family_diseases'].hasError('required')">
+        Les malades chronique <strong>sont requis</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>SERVICE DE SANTE HABITUELLEMENT UTILISE</mat-label>
+      <input matInput placeholder="Entrez les service de santé habituelement utilisé ici"
+        formControlName="usual_use_service">
+      <mat-icon matSuffix>article</mat-icon>
+      <mat-error *ngIf="form.controls['usual_use_service'].hasError('required')">
+        service de santé habituelement utilisé <strong>sont requis</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">Fermer</button>
+  <button mat-raised-button color="primary" (click)="update()">Modifier</button>
+</mat-dialog-actions>

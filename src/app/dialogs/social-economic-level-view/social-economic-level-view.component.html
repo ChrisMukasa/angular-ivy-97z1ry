@@ -1,0 +1,81 @@
+<mat-card-title>Détail du facteur social economique</mat-card-title>
+<br><br>
+<mat-dialog-content>
+
+  <div class="row mt-2" style="display: flex; justify-content:space-between; align-items:start;">
+    <div style="width: 50%;">
+      <div>
+        <mat-card-subtitle>ID: </mat-card-subtitle>
+        <p><b>{{social_economic_level.id}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Profession du chef de menage: </mat-card-subtitle>
+        <p><b>{{social_economic_level.profession_head_of_household}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Source de revenue habituelle: </mat-card-subtitle>
+        <p><b>{{social_economic_level.usual_source_of_income}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Montant du loyer: </mat-card-subtitle>
+        <p><b>{{social_economic_level.rent_amount}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Nombre de membre: </mat-card-subtitle>
+        <p><b>{{social_economic_level.number_of_member}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Capacite a payer le soin medicaux: </mat-card-subtitle>
+        <p><b>{{social_economic_level.capacity_cost}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Autre facteurs: </mat-card-subtitle>
+        <p><b>{{social_economic_level.other_factor}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Date de creation: </mat-card-subtitle>
+        <p><b>{{social_economic_level.created_at.toString().substring(0, 10)}}</b></p>
+      </div>
+    </div>
+
+    <div style="width: 50%;">
+      <div>
+        <mat-card-subtitle>Ménage: </mat-card-subtitle>
+        <p><b>{{social_economic_level.id_household}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Autre profession du chef de menage: </mat-card-subtitle>
+        <p><b>{{social_economic_level.other_profession}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Appartenance du menage: </mat-card-subtitle>
+        <p><b>{{social_economic_level.proprio_location}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Nombre de menage dans la parcelle: </mat-card-subtitle>
+        <p><b>{{social_economic_level.number_habitation}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Nombre de chambre: </mat-card-subtitle>
+        <p><b>{{social_economic_level.bedroom}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Qui paye le soin medicaux: </mat-card-subtitle>
+        <p><b>{{social_economic_level.payment_type}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Autre infos: </mat-card-subtitle>
+        <p><b>{{social_economic_level.other_info}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Date de modification: </mat-card-subtitle>
+        <p><b>{{social_economic_level.updated_at.toString().substring(0, 10)}}</b></p>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>

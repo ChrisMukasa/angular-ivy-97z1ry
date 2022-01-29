@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+@import "~material-design-icons/iconfont/material-icons.css";
+
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  height: 100vh;
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+}
+
+section {
+  padding: 20px 30px;
+  background-color: #fafafa;
+}
+
+/* edit text */
+.input_sign_in,
+.input_text_form,
+.input_message {
+  width: 100%;
+}
+
+/* button table action */
+a .uil {
+  font-size: 18px;
+}
+
+mat-dialog-actions .mat-icon-button {
+  background-color: rgba(221, 19, 19, 0.1);
+}
+
+mat-dialog-actions .mat-icon-button mat-icon {
+  color: #dd1313;
+}

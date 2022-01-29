@@ -1,0 +1,75 @@
+<mat-card-title>Détail du facteur de prevention primaire</mat-card-title>
+<br><br>
+<mat-dialog-content>
+  <div class="row" style="display: flex; justify-content:space-between;">
+    <div style="width: 32%;">
+      <div >
+        <mat-card-subtitle>ID: </mat-card-subtitle>
+        <p><b>{{primary_prediction.id}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Religion: </mat-card-subtitle>
+        <p><b>{{primary_prediction.religion}}</b></p>
+      </div>
+      <div disabled class="col-md-4" style="margin-bottom: 16px; cursor:none">
+        <mat-label style="margin-right: 16px">ELETRICITE</mat-label><br>
+        <mat-checkbox [checked]="primary_prediction.light_petrol == 1" >Lampe petrole</mat-checkbox><br>
+        <mat-checkbox [checked]="primary_prediction.light_public == 1" >Eclairage publique</mat-checkbox><br>
+        <mat-checkbox [checked]="primary_prediction.light_sun    == 1" >Systeme Solaire</mat-checkbox><br>
+        <mat-label *ngIf="primary_prediction.other_light != '-'">Autre electricite: {{primary_prediction.other_light}}</mat-label><br>
+      </div>
+      <div>
+        <mat-card-subtitle>Hygiene de l'habitat: </mat-card-subtitle>
+        <p><b>{{primary_prediction.hygiene_habitat}}</b></p>
+      </div>
+    </div>
+
+    <div style="width: 32%;">
+      <div>
+        <mat-card-subtitle>Ménage: </mat-card-subtitle>
+        <p><b>{{primary_prediction.id_household}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Eau potable: </mat-card-subtitle>
+        <p><b>{{primary_prediction.water}}</b></p>
+      </div>
+      <div disabled class="col-md-4" style="margin-bottom: 16px">
+        <mat-label style="margin-right: 16px">TOILETTE</mat-label><br>
+        <mat-checkbox [checked]="primary_prediction.toilet_inside  == 1">Toilette a l'interieur</mat-checkbox><br>
+        <mat-checkbox [checked]="primary_prediction.toilet_outside == 1">Toilette a l'exterieur</mat-checkbox><br>
+        <mat-label *ngIf="primary_prediction.other_toilet != '-'">Autre electricite: {{primary_prediction.other_toilet}}</mat-label><br>
+      </div>
+      <div>
+        <mat-card-subtitle>Autre hygiene: </mat-card-subtitle>
+        <p><b>{{primary_prediction.other_hygiene_habitat}}</b></p>
+      </div>
+    </div>
+
+    <div style="width: 32%;">
+      <div class="row mt-2">
+        <mat-card-subtitle>Nationalite: </mat-card-subtitle>
+        <p><b>{{primary_prediction.nationality}}</b></p>
+      </div>
+      <div class="row mt-2">
+        <mat-card-subtitle>Religion: </mat-card-subtitle>
+        <p><b>{{primary_prediction.religion}}</b></p>
+      </div>
+      <div disabled class="col-md-4" style="margin-bottom: 16px">
+        <mat-label style="margin-right: 16px">LANGUE</mat-label><br>
+        <mat-checkbox [checked]="primary_prediction.french    == 1">Francais</mat-checkbox><br>
+        <mat-checkbox [checked]="primary_prediction.english   == 1">Anglais</mat-checkbox><br>
+        <mat-checkbox [checked]="primary_prediction.kiswahili == 1">Kiswahili</mat-checkbox><br>
+        <mat-checkbox [checked]="primary_prediction.lingala   == 1">Lingala</mat-checkbox>
+      </div>
+      <div class="row mt-2">
+        <mat-card-subtitle>Observations: </mat-card-subtitle>
+        <p><b>{{primary_prediction.other}}</b></p>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>

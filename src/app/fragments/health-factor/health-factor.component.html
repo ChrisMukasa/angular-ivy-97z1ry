@@ -1,0 +1,70 @@
+<section class="health_factor">
+  <div class="container pt-3" id="main-container">
+    <div class="row" style="display:flex; justify-content: space-between; align-items: center;">
+      <h2 class="col-md-10">Facteur sanitaire</h2>
+      <button mat-raised-button color="primary" (click)="createDialog()">NOUVEAU</button>
+    </div>
+    <hr class="dropdown-divider" />
+
+    <div class="table_actions row"
+      style="display:flex; justify-content: space-between; align-items: center; padding:10px 0px">
+      <h4 class="title mt-4 mb-3">Liste des facteurs sanitaire ({{health_factors.length}})</h4>
+      <p>
+        <mat-form-field class="input_text_form" appearance="fill">
+          <mat-label>Rechercher ici...</mat-label>
+          <input #query matInput placeholder="Votre requête de recherche ici" (keyup)="performSearch(query.value)">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+
+    <div class="mat-elevation-z2">
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> Id. </th>
+          <td mat-cell *matCellDef="let health_factor"> {{health_factor.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="id_household">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id_household"> Menage
+          </th>
+          <td mat-cell *matCellDef="let health_factor"> <b>{{health_factor.id_household}}</b> </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="usual_use_service">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by usual_use_service">
+            Service de santé habituelement utilisé
+          </th>
+          <td mat-cell *matCellDef="let health_factor"> {{health_factor.usual_use_service}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by created_at"> Date </th>
+          <td mat-cell *matCellDef="let health_factor"> {{health_factor.created_at.toString().substring(0, 10)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let health_factor">
+            <div class="btn-group">
+              <a (click)="viewDialog(health_factor)" class="btn btn-light btn-xs" title="View"
+                style="background-color: rgba(0, 0, 128, 0.1)"> <i class="uil uil-eye" style="color: #000080"></i></a>
+              <a (click)="updateDialog(health_factor)" class="btn btn-light btn-xs" title="Edit"
+                style="background-color: rgba(0, 128, 0, 0.1)"> <i class="uil uil-pen" style="color: #008000"></i></a>
+              <a (click)="deleteDialog(health_factor.id)" class="btn btn-light btn-xs" title="Delete"
+                style="background-color: rgba(221, 19, 19, 0.1)"> <i class="uil uil-trash"
+                  style="color: #dd1313"></i></a>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">{{row}}</tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of elements">
+      </mat-paginator>
+    </div>
+  </div>
+</section>

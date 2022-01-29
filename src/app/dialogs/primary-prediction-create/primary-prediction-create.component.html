@@ -1,0 +1,177 @@
+<mat-card-title>Nouvel facteur de prevention primaire</mat-card-title>
+<br><br>
+<mat-dialog-content [formGroup]="form">
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>MENAGE</mat-label>
+        <mat-select formControlName="id_household" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let household of households" [value]="household.id">
+            {{household.id}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_household'].hasError('required')">Veuillez choisir un menage</mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>EAU</mat-label>
+        <mat-select formControlName="id_water" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let water of waters" [value]="water.id">
+            {{water.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_water'].hasError('required')">Veuillez choisir une source d'eau</mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>RELIGION</mat-label>
+        <mat-select formControlName="id_religion" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let religion of religions" [value]="religion.id">
+            {{religion.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_religion'].hasError('required')">Veuillez choisir une religion</mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>NATIONALITE</mat-label>
+        <mat-select formControlName="id_nationality" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let nationality of nationalities" [value]="nationality.id">
+            {{nationality.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['id_nationality'].hasError('required')">Veuillez choisir une nationalité
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex; justify-content: space-between;">
+    <div class="col-md-4">
+      <mat-label style="margin-right: 16px">ELETRICITE</mat-label><br>
+      <mat-checkbox #check_light_petrol (click)="toggle_check_light_petrol(!check_light_petrol.checked)"> Lampe petrole
+      </mat-checkbox><br>
+      <mat-checkbox #check_light_public (click)="toggle_check_light_public(!check_light_public.checked)"> Eclairage
+        publique </mat-checkbox><br>
+      <mat-checkbox #check_light_sun (click)="toggle_check_light_sun   (!check_light_sun.checked)"> Solaire
+      </mat-checkbox><br>
+      <mat-checkbox #check_light_other (click)="toggle_check_light_other (!check_light_other.checked)"> Si autre,
+        preciser </mat-checkbox><br>
+      <mat-form-field *ngIf="check_light_other.checked" class="input_text_form" style="width: 200px;">
+        <mat-label>AUTRE ELETRICITE</mat-label>
+        <input matInput placeholder="ex: GROUPE ELECTROGENE" formControlName="other_eletrcicity">
+        <mat-icon matSuffix>article</mat-icon>
+        <mat-error *ngIf="form.controls['other_eletrcicity'].hasError('required')">
+          Autre source d'electricite <strong>est requise</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4">
+      <mat-label style="margin-right: 16px">TOILETTE</mat-label><br>
+      <mat-checkbox #check_toilet_inside (click)="toggle_toilet_in (!check_toilet_inside.checked)"> Toilette a
+        l'interieur </mat-checkbox><br>
+      <mat-checkbox #check_toilet_outside (click)="toggle_toilet_out(!check_toilet_outside.checked)"> Toilette a
+        l'exterieur </mat-checkbox><br>
+      <mat-checkbox #check_toilet_other (click)="toggle_toilet_oth(!check_toilet_other.checked)"> Si autre, preciser
+      </mat-checkbox><br>
+      <mat-form-field *ngIf="check_toilet_other.checked" class="input_text_form" style="width: 200px;">
+        <mat-label>AUTRE ELETRICITE</mat-label>
+        <input matInput placeholder="ex: TOILETTE DU VOISIN" formControlName="other_toilet">
+        <mat-icon matSuffix>article</mat-icon>
+        <mat-error *ngIf="form.controls['other_toilet'].hasError('required')">
+          Autre toilette <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4">
+      <mat-label style="margin-right: 16px">LANGUE</mat-label><br>
+      <mat-checkbox #check_language_french (click)="toggle_language_french   (!check_language_french.checked)"> Francais
+      </mat-checkbox><br>
+      <mat-checkbox #check_language_english (click)="toggle_language_english  (!check_language_english.checked)">
+        Anglais </mat-checkbox><br>
+      <mat-checkbox #check_language_kiswahili (click)="toggle_language_kiswahili(!check_language_kiswahili.checked)">
+        Kiswahili </mat-checkbox><br>
+      <mat-checkbox #check_language_lingala (click)="toggle_language_lingala  (!check_language_lingala.checked)">
+        Lingala </mat-checkbox>
+    </div>
+  </div>
+
+  <div class="row" style="display: flex; margin-top:16px">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Nombre total de personnes dormant sous moustiquaire</mat-label>
+        <input matInput placeholder="Entrez Nombre total de personnes dormant sous moustiquaire ici"
+          formControlName="mosquito_net_number">
+        <mat-icon matSuffix>mosquito</mat-icon>
+        <mat-error *ngIf="form.controls['mosquito_net_number'].hasError('required')">
+          Le nombre <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>Nombre d'enfant de 0 a 5 ans dormant sous moustiquaire</mat-label>
+        <input matInput placeholder="Entrez le nombre d\'enfant de 0 a 5 ans dormant sous moustiquairee ici"
+          formControlName="mosquito_net_used_number">
+        <mat-icon matSuffix>mosquito</mat-icon>
+        <mat-error *ngIf="form.controls['mosquito_net_used_number'].hasError('required')">
+          Le nombre <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="row" style="display: flex">
+    <p class="first" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>HYGIENE HABITAT</mat-label>
+        <mat-select formControlName="hygiene_habitat" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let hygiene_habitat of hygiene_habitats" [value]="hygiene_habitat.designation">
+            {{hygiene_habitat.designation}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['hygiene_habitat'].hasError('required')">Veuillez choisir une hygiene habitat
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p class="second" style="width: 50%;">
+      <mat-form-field class="input_text_form" appearance="fill">
+        <mat-label>AUTRE HYGIENE HABITAT</mat-label>
+        <input matInput placeholder="Entrez autre hygiene habitat ici" formControlName="other_hygiene_habitat">
+        <mat-icon matSuffix>mosquito</mat-icon>
+        <mat-error *ngIf="form.controls['other_hygiene_habitat'].hasError('required')">
+          Le nombre <strong>est requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <p class="second" style="width: 100%;">
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>AUTRE</mat-label>
+      <input matInput placeholder="Entrez autre detail ici" formControlName="other">
+      <mat-icon matSuffix>mosquito</mat-icon>
+      <mat-error *ngIf="form.controls['other'].hasError('required')">
+        Autre details <strong>est requis</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">Fermer</button>
+  <button mat-raised-button color="primary" (click)="create()">Enregistrer</button>
+</mat-dialog-actions>

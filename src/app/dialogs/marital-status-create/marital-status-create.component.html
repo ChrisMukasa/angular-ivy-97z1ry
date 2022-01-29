@@ -1,0 +1,29 @@
+<mat-card-title>Nouvel Etat civil</mat-card-title>
+<br><br>
+<mat-dialog-content [formGroup]="form">
+  <p>
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>ex: CEL</mat-label>
+      <input matInput placeholder="ID here" formControlName="id">
+      <mat-icon matSuffix>article</mat-icon>
+      <mat-error *ngIf="form.controls['id'].hasError('required')">
+        Le code <strong>est requis</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>ex: CELIBATAIRE</mat-label>
+      <input matInput placeholder="Designation here" formControlName="designation">
+      <mat-icon matSuffix>article</mat-icon>
+      <mat-error *ngIf="form.controls['designation'].hasError('required')">
+        La désignation <strong>est requis</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">Fermer</button>
+  <button mat-raised-button color="primary" (click)="create()">Enregistrer</button>
+</mat-dialog-actions>

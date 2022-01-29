@@ -1,0 +1,85 @@
+<mat-card-title>Détail du membre</mat-card-title>
+<br><br>
+<mat-dialog-content>
+
+  <div class="row mt-2" style="display: flex; justify-content:space-between; align-items:start;">
+    <div style="width: 33.33%;">
+      <div >
+        <mat-card-subtitle>ID: </mat-card-subtitle>
+        <p><b>{{member.id}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Scolarité: </mat-card-subtitle>
+        <p><b>{{member.schooling}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Nom complet: </mat-card-subtitle>
+        <p><b>{{member.fullname}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Genre: </mat-card-subtitle>
+        <p><b>{{member.gender}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Lieu de naissance: </mat-card-subtitle>
+        <p><b>{{member.pob}}</b></p>
+      </div>
+    </div>
+
+    <div style="width: 33.33%;">
+      <div>
+        <mat-card-subtitle>Ménage: </mat-card-subtitle>
+        <p><b>{{member.id_household}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Lien de parenté: </mat-card-subtitle>
+        <p><b>{{member.relationship}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Profession: </mat-card-subtitle>
+        <p><b>{{member.profession}}</b></p>
+      </div>
+      <div>
+        <mat-card-subtitle>Mutuel: </mat-card-subtitle>
+        <ng-container *ngIf="member.mutual == 1; else elseTemplate">
+          <p style="color: green"><b>OUI</b></p>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <p style="color: red"><b>NON</b></p>
+        </ng-template>
+      </div>
+      <div>
+        <mat-card-subtitle>Date d'enregistrement: </mat-card-subtitle>
+        <p><b>{{member.registration_date}}</b></p>
+      </div>
+    </div>
+
+    <div style="width: 33.33%;">
+      <div class="row mt-2">
+        <mat-card-subtitle>Etat civile: </mat-card-subtitle>
+        <p><b>{{member.marital_status}}</b></p>
+      </div>
+      <div class="row mt-2">
+        <mat-card-subtitle>Religion: </mat-card-subtitle>
+        <p><b>{{member.religion}}</b></p>
+      </div>
+      <div class="row mt-2">
+        <mat-card-subtitle>Phone: </mat-card-subtitle>
+        <p><b>{{member.phone}}</b></p>
+      </div>
+      <div class="row mt-2">
+        <mat-card-subtitle>Date de naissance: </mat-card-subtitle>
+        <p><b>{{member.dob}}</b></p>
+      </div>
+      <div class="row mt-2">
+        <mat-card-subtitle>Date de creation: </mat-card-subtitle>
+        <p><b>{{member.updated_at.toString().substring(0, 10)}}</b></p>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>

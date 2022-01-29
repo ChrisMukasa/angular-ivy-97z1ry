@@ -1,0 +1,12 @@
+mat-dialog-content{
+  width: 900px;
+}
+
+.content .row{
+  margin-top: 10px;
+}
+
+.content .row p b{
+  margin-top: 2px;
+  font-size: 18px;
+}

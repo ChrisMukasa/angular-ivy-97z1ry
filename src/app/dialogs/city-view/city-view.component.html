@@ -1,0 +1,22 @@
+<mat-card-title>City details</mat-card-title>
+<mat-dialog-content class="content">
+    <div class="row mt-4">
+        <mat-card-subtitle>Id: </mat-card-subtitle>
+        <p><b>{{city.id}}</b></p>
+    </div>
+
+    <div class="row mt-2">
+        <mat-card-subtitle>Designation: </mat-card-subtitle>
+        <p><b>{{city.designation}}</b></p>
+    </div>
+
+    <div class="row mt-2">
+        <mat-card-subtitle>Créé à: </mat-card-subtitle>
+        <p><b>{{city.created_at.toString().substring(0, 10)}}</b></p>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-icon-button (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,22 @@
+<mat-card-title>Détails de la zone de santé</mat-card-title>
+<mat-dialog-content class="content">
+  <div class="row mt-4">
+    <mat-card-subtitle>Id: </mat-card-subtitle>
+    <p><b>{{health_zone.id}}</b></p>
+  </div>
+
+  <div class="row mt-2">
+    <mat-card-subtitle>Designation: </mat-card-subtitle>
+    <p><b>{{health_zone.designation}}</b></p>
+  </div>
+
+  <div class="row mt-2">
+    <mat-card-subtitle>Créé à: </mat-card-subtitle>
+    <p><b>{{health_zone.created_at.toString().substring(0, 10)}}</b></p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,92 @@
+<section class="primary-prediction">
+  <div class="container pt-3" id="main-container">
+    <div class="row" style="display:flex; justify-content: space-between; align-items: center;">
+      <h2 class="col-md-10">Facteurs de prevention primaire</h2>
+      <button mat-raised-button color="primary" (click)="createDialog()">NOUVEAU</button>
+    </div>
+    <hr class="dropdown-divider" />
+
+    <div class="table_actions row"
+      style="display:flex; justify-content: space-between; align-items: center; padding:10px 0px">
+      <h4 class="title mt-4 mb-3">Liste des facteurs de prevention primaires ({{primary_predictions.length}})</h4>
+      <p>
+        <mat-form-field class="input_text_form" appearance="fill">
+          <mat-label>Rechercher ici...</mat-label>
+          <input #query matInput placeholder="Votre requête de recherche ici" (keyup)="performSearch(query.value)">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+
+    <div class="mat-elevation-z2">
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> Id. </th>
+          <td mat-cell *matCellDef="let primary_prediction"> {{primary_prediction.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="id_household">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id_household"> Menage
+          </th>
+          <td mat-cell *matCellDef="let primary_prediction"> {{primary_prediction.id_household}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="water">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by water"> Source d'eau
+          </th>
+          <td mat-cell *matCellDef="let primary_prediction"> {{primary_prediction.water}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="hygiene_habitat">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by hygiene_habitat"> Hygiene Habitat
+          </th>
+          <td mat-cell *matCellDef="let primary_prediction">
+            <ng-container *ngIf="primary_prediction.hygiene_habitat == 'TRES BONNE'; else elseTemplate">
+              <b><p style="color:green; background-color: rgba(0, 128, 0, 0.1); padding: 6px 10px; width: 50%; border-radius: 5px; ">{{primary_prediction.hygiene_habitat}}</p></b>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <ng-container *ngIf="primary_prediction.hygiene_habitat == 'BONNE'; else elseTemplate">
+                <b><p style="color:green; background-color: rgba(0, 128, 0, 0.1); padding: 6px 10px; width: 50%; border-radius: 5px; ">{{primary_prediction.hygiene_habitat}}</p></b>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <ng-container *ngIf="primary_prediction.hygiene_habitat == 'MOYENNE'; else elseTemplate">
+                  <b><p style="color:orange; background-color: rgba(231, 192, 18, 0.1); padding: 6px 10px; width: 50%; border-radius: 5px; ">{{primary_prediction.hygiene_habitat}}</p></b>
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <b><p style="color:#dd1313; background-color: rgba(221, 19, 19, 0.1); padding: 6px 10px; width: 50%; border-radius: 5px; ">{{primary_prediction.hygiene_habitat}}</p></b>
+                </ng-template>
+              </ng-template>
+            </ng-template>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by created_at"> Date </th>
+          <td mat-cell *matCellDef="let primary_prediction"> {{primary_prediction.created_at.toString().substring(0, 10)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let primary_prediction">
+            <div class="btn-group">
+              <a (click)="viewDialog(primary_prediction)" class="btn btn-light btn-xs" title="View"
+                style="background-color: rgba(0, 0, 128, 0.1)"> <i class="uil uil-eye" style="color: #000080"></i></a>
+              <a (click)="updateDialog(primary_prediction)" class="btn btn-light btn-xs" title="Edit"
+                style="background-color: rgba(0, 128, 0, 0.1)"> <i class="uil uil-pen" style="color: #008000"></i></a>
+              <a (click)="deleteDialog(primary_prediction.id)" class="btn btn-light btn-xs" title="Delete"
+                style="background-color: rgba(221, 19, 19, 0.1)"> <i class="uil uil-trash"
+                  style="color: #dd1313"></i></a>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">{{row}}</tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of elements">
+      </mat-paginator>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<mat-card-title>Créer une nouvelle commune</mat-card-title>
+<br><br>
+<mat-dialog-content [formGroup]="form">
+  <p>
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>Ville</mat-label>
+      <mat-select formControlName="id_city" required>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let city of cities" [value]="city.id">
+          {{city.designation}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['id_city'].hasError('required')">Veuillez choisir une ville</mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="input_text_form" appearance="fill">
+      <mat-label>ex: KARISIMBI</mat-label>
+      <input matInput placeholder="Designation here" formControlName="designation">
+      <mat-icon matSuffix>article</mat-icon>
+      <mat-error *ngIf="form.controls['designation'].hasError('required')">
+        La désignation <strong>est requis</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="close()">Fermer</button>
+  <button mat-raised-button color="primary" (click)="create()">Enregistrer</button>
+</mat-dialog-actions>

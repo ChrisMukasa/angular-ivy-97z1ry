@@ -1,0 +1,39 @@
+<mat-card-title>Détail du Facteur sanitaire</mat-card-title>
+<br><br>
+<mat-dialog-content class="content">
+    <div class="row mt-4">
+      <mat-card-subtitle>ID: </mat-card-subtitle>
+      <p><b>{{health_factor.id}}</b></p>
+    </div>
+
+    <div class="row mt-2">
+      <mat-card-subtitle>MENAGE: </mat-card-subtitle>
+      <p><b>{{health_factor.id_household}}</b></p>
+    </div>
+
+    <div class="row mt-2">
+      <mat-card-subtitle>MALADIES FAMILIALES: </mat-card-subtitle>
+      <p><b>{{health_factor.family_diseases}}</b></p>
+    </div>
+
+    <div class="row mt-2">
+      <mat-card-subtitle>MALADES CHRONIQUE DANS LA FAMILLE: </mat-card-subtitle>
+        <p><b>{{health_factor.other_family_diseases}}</b></p>
+    </div>
+
+    <div class="row mt-2">
+      <mat-card-subtitle>SERVICE DE SANTE HABITUELLEMENT UTILISE: </mat-card-subtitle>
+      <p><b>{{health_factor.usual_use_service}}</b></p>
+    </div>
+
+    <div class="row mt-2">
+        <mat-card-subtitle>Créé à: </mat-card-subtitle>
+        <p><b>{{health_factor.created_at.toString().substring(0, 10)}}</b></p>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-icon-button (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-dialog-actions>
+
